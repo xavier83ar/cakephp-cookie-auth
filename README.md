@@ -31,7 +31,7 @@ _[GIT Clone]_
 In your plugin directory type
 
 ```bash
-git clone git://github.com/xavier83ar/cakephp-cookie-auth.git [PLUGIN_NAME]
+git clone git://github.com/xavier83ar/cakephp-cookie-auth.git CookieAuth
 ```
 
 ## Usage
