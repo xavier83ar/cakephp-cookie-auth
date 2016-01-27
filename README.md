@@ -2,10 +2,15 @@
 
 Cookie based authentication. An attempt to make it secure.
 
+## WORK IN PROGRESS ALERT!
+
+This is the first early version of a work in progress project, use it at your own risk.
+
 ## Motivation
 
 I need this feature on a cakephp project and after taking a look at 
 [Cake3-CookieAuth](https://github.com/Xety/Cake3-CookieAuth) and reading [this](https://github.com/FriendsOfCake/Authenticate/issues/53) besides others articles and posts about security risks related to this feature, I've decided to do my own implementation.
+
 
 ## Requirements
 
@@ -38,10 +43,16 @@ git clone git://github.com/xavier83ar/cakephp-cookie-auth.git [PLUGIN_NAME]
 
 @todo
 
+## Credits
+
+- Readme template from [José Gonzalez](https://gist.github.com/josegonzalez/903066)
+- Inspired by [Cake3-CookieAuth](https://github.com/Xety/Cake3-CookieAuth)
+- and [kevinquinnyo/Authenticate](https://github.com/kevinquinnyo/Authenticate)
+- also [this](http://stackoverflow.com/questions/244882/what-is-the-best-way-to-implement-remember-me-for-a-website#answer-244907)
 
 ## License
 
-Copyright (c) [CURRENT_YEAR] [YOUR_NAME]
+Copyright (c) 2016 Javier Melero
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -60,3 +71,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
