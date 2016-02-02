@@ -80,8 +80,10 @@ class CookieAuthenticate extends BaseAuthenticate
     }
 
     /**
-     * @param Request $request
-     * @return mixed
+     * {@inheritdoc}
+     *
+     * @param \Cake\Network\Request $request a Cake Request object
+     * @return array|bool
      */
     public function getUser(Request $request)
     {
@@ -104,13 +106,16 @@ class CookieAuthenticate extends BaseAuthenticate
     }
 
     /**
-     * @param Event $event
-     * @param array $result
-     * @param BaseAuthenticate $auth
+     * After succefully logged in a user, here we check if the remember me option was checked and set the cookie if so.
+     *
+     * @param Event $event Event object
+     * @param array $result array of user data
+     * @param BaseAuthenticate $auth Autheticate object that succesfully logged user in
+     * @return void
      */
     public function afterIdentify(Event $event, array $result, BaseAuthenticate $auth)
     {
-        /** @var Request $request */
+        /* @var Request $request */
         $request = $event->subject()->request;
         if (!$request->data($this->_config['cookieFields']['rememberMe'])) {
             return;
@@ -135,8 +140,11 @@ class CookieAuthenticate extends BaseAuthenticate
     }
 
     /**
-     * @param Event $event
-     * @param array $user
+     * If user logs out, removes the cookies.
+     *
+     * @param Event $event Cake Event object
+     * @param array $user user data
+     * @return void
      */
     public function logout(Event $event, array $user)
     {
@@ -162,7 +170,7 @@ class CookieAuthenticate extends BaseAuthenticate
     }
 
     /**
-     * @param StorageInterface|null $storage
+     * @param StorageInterface|null $storage a storage object
      * @return StorageInterface|null
      */
     public function storage(StorageInterface $storage = null)
@@ -196,7 +204,7 @@ class CookieAuthenticate extends BaseAuthenticate
     /**
      * @return array|bool
      */
-    private function _checkCookies()
+    protected function _checkCookies()
     {
         $config = $this->_config['cookie'];
         if (!isset($this->_registry->Cookie) || !$this->_registry->Cookie instanceof CookieComponent) {
@@ -216,14 +224,15 @@ class CookieAuthenticate extends BaseAuthenticate
     }
 
     /**
-     * @param array $value
+     * @param array $value data to set in the cookies
+     * @return void
      */
-    private function _setCookies(array $value)
+    protected function _setCookies(array $value)
     {
         if (!isset($this->_registry->Cookie) || !$this->_registry->Cookie instanceof CookieComponent) {
             throw new MissingComponentException(['class' => 'CookieComponent']);
         }
-        /** @var CookieComponent $cookie */
+        /* @var CookieComponent $cookie */
         $cookie = $this->_registry->Cookie;
 
         $config = $this->_config['cookie'];
@@ -235,14 +244,14 @@ class CookieAuthenticate extends BaseAuthenticate
     }
 
     /**
-     * 
+     * @return void
      */
-    private function _removeCookies()
+    protected function _removeCookies()
     {
         if (!isset($this->_registry->Cookie) || !$this->_registry->Cookie instanceof CookieComponent) {
             throw new MissingComponentException(['class' => 'CookieComponent']);
         }
-        /** @var CookieComponent $cookie */
+        /* @var CookieComponent $cookie */
         $cookie = $this->_registry->Cookie;
 
         $config = $this->_config['cookie'];
@@ -254,10 +263,10 @@ class CookieAuthenticate extends BaseAuthenticate
     }
 
     /**
-     * @param $_username
+     * @param string $_username the username
      * @return mixed
      */
-    private function _generateIdentifier($_username)
+    protected function _generateIdentifier($_username)
     {
         return sha1($_username);
     }
@@ -265,7 +274,7 @@ class CookieAuthenticate extends BaseAuthenticate
     /**
      * @return string
      */
-    private function _generateToken()
+    protected function _generateToken()
     {
         return sha1(Text::uuid());
     }

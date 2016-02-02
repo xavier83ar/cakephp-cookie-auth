@@ -14,15 +14,17 @@ namespace Linked\CookieAuth\Auth\Storage;
 interface StorageInterface
 {
     /**
-     * @param null $key
-     * @param null $value
-     * @param bool $merge
+     * Set or get the configuration for this storage
+     *
+     * @param null|string|array $key config key or array to set, null to get the config
+     * @param null|string $value when $key is a string, this is the value to set for that key.
+     * @param bool $merge if merge with actual config or override it.
      * @return mixed
      */
     public function config($key = null, $value = null, $merge = true);
     
     /**
-     * @param $identifier string
+     * @param string $identifier unique string identifier to store associated data
      * @return array Un array con la siguiente estructura
      *   [
      *     'username' => '...',
@@ -32,15 +34,19 @@ interface StorageInterface
     public function read($identifier);
 
     /**
-     * @param $identifier
-     * @param array $data
-     * @return boolean
+     * @param string $identifier unique string identifier to store associated data
+     * @param array $data Un array con la siguiente estructura
+     *   [
+     *     'username' => '...',
+     *     'token' => '...'
+     *   ]
+     * @return bool
      */
     public function write($identifier, array $data);
 
     /**
-     * @param $identifier
-     * @return boolean
+     * @param string $identifier unique string identifier to store associated data
+     * @return bool
      */
     public function delete($identifier);
 }

@@ -32,7 +32,7 @@ class CacheStorage implements StorageInterface
 
     /**
      * CacheStorage constructor.
-     * @param array $config
+     * @param array $config initial configuration
      */
     public function __construct(array $config)
     {
@@ -44,7 +44,7 @@ class CacheStorage implements StorageInterface
     }
 
     /**
-     * @param $identifier string
+     * @param string $identifier unique string identifier to store associated data
      * @return array Un array con la siguiente estructura
      *   [
      *     'username' => '...',
@@ -57,9 +57,13 @@ class CacheStorage implements StorageInterface
     }
 
     /**
-     * @param $identifier
-     * @param array $data
-     * @return boolean
+     * @param string $identifier unique string identifier to store associated data
+     * @param array $data Un array con la siguiente estructura
+     *   [
+     *     'username' => '...',
+     *     'token' => '...'
+     *   ]
+     * @return bool
      */
     public function write($identifier, array $data)
     {
@@ -67,8 +71,8 @@ class CacheStorage implements StorageInterface
     }
 
     /**
-     * @param $identifier
-     * @return boolean
+     * @param string $identifier unique string identifier to store associated data
+     * @return bool
      */
     public function delete($identifier)
     {
