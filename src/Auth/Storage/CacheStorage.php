@@ -40,6 +40,9 @@ class CacheStorage implements StorageInterface
         $_config = $this->config();
         $_configName = $_config['cacheConfig'];
         unset($_config['cacheConfig']);
+        if (Cache::config($_configName)) {
+            Cache::drop($_configName);
+        }
         Cache::config($_configName, $_config);
     }
 

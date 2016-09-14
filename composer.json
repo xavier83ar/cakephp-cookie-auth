@@ -3,7 +3,7 @@
     "description": "CookieAuth plugin for CakePHP",
     "type": "cakephp-plugin",
     "license": "MIT",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "require": {
         "php": ">=5.4.16",
         "cakephp/cakephp": "~3.0"
