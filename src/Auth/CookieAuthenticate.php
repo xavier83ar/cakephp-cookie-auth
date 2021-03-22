@@ -268,7 +268,7 @@ class CookieAuthenticate extends BaseAuthenticate
      */
     protected function _generateIdentifier($_username)
     {
-        return sha1($_username);
+        return sha1($_username . time());
     }
 
     /**
